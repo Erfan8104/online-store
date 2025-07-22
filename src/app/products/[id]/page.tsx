@@ -20,7 +20,7 @@ export default function ProductDetailPage() {
       : product.price;
 
   return (
-    <main className="max-w-5xl mx-auto px-4 py-10">
+    <main>
       <div className="grid md:grid-cols-2 gap-8">
         {/* تصویر محصول */}
         <div>

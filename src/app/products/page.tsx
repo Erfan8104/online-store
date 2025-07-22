@@ -34,7 +34,7 @@ export default function ProductsPage() {
   });
 
   return (
-    <main className="max-w-7xl mx-auto px-4 py-10">
+    <main>
       <h1 className="text-2xl font-bold text-gray-800 mb-6">محصولات</h1>
 
       <div className="flex flex-col md:flex-row gap-6">
