@@ -1,7 +1,8 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { productsData } from "@/data/mockData";
+import { productsData } from "./../../../data/mockData";
+import { notFound } from "next/navigation";
 
 export default function ProductDetailPage() {
   const { id } = useParams();
@@ -10,9 +11,7 @@ export default function ProductDetailPage() {
   const product = productsData.products.find((p) => p.id === productId);
 
   if (!product) {
-    return (
-      <p className="text-center text-red-500 mt-20">محصول مورد نظر یافت نشد.</p>
-    );
+    return notFound();
   }
 
   const finalPrice =
