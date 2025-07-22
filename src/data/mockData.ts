@@ -202,3 +202,40 @@ export const productsData = {
     },
   ],
 };
+export const productDetail = {
+  id: 101,
+  name: "لپ‌تاپ اپل مدل X543",
+  price: 25000000,
+  discount: 15,
+  finalPrice: 21250000,
+  images: [
+    "/images/product-detail-1.jpg",
+    "/images/product-detail-2.jpg",
+    "/images/product-detail-3.jpg",
+  ],
+  rating: 4.5,
+  reviewCount: 24,
+  description:
+    "با پردازنده Core i7، رم 16 گیگ، حافظه SSD با ظرفیت 512 گیگابایت، صفحه‌نمایش 15.6 اینچ، سیستم‌عامل ویندوز 11.",
+  specifications: {
+    پردازنده: "Intel Core i7 1165G7",
+    "حافظه رم": "16 گیگابایت DDR4",
+    "حافظه ذخیره‌سازی": "512 گیگابایت SSD",
+    "صفحه نمایش": "15.6 اینچ Full HD",
+    سیستم‌عامل: "Windows 11 Home",
+  },
+  relatedProducts: [
+    {
+      id: 103,
+      name: "لپ‌تاپ دل",
+      price: 28000000,
+      image: "/images/related1.jpg",
+    },
+    {
+      id: 104,
+      name: "لپ‌تاپ لنوو",
+      price: 23000000,
+      image: "/images/related2.jpg",
+    },
+  ],
+};
