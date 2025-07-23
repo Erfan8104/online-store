@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+
+const cartItemsCount = 3;
 export default function Header() {
   return (
     <header className="bg-white shadow-md ">
@@ -21,6 +23,12 @@ export default function Header() {
             حساب
           </Link>
         </nav>
+        <Link href="/cart" className="relative inline-block">
+          <span className="text-2xl">🛒</span>
+          <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2">
+            {cartItemsCount}
+          </span>
+        </Link>
       </div>
     </header>
   );
