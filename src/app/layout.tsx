@@ -1,10 +1,9 @@
-import "./globals.css";
-import type { Metadata } from "next";
+import { CartProvider } from "./../app/context/CartContext";
 import Header from "./../components/Header";
 import Footer from "./../components/Footer";
-import { CartProvider } from "./context/CartContext";
+import "./globals.css";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Online Store",
   description: "An online store built with Next.js and Tailwind CSS",
 };

@@ -1,8 +1,13 @@
 "use client";
 import Link from "next/link";
+import { useCart } from "./../app/context/CartContext";
 
-const cartItemsCount = 3;
 export default function Header() {
+  const { cartItems } = useCart();
+  const cartItemCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
   return (
     <header className="bg-white shadow-md ">
       <div className="max-w-7xl mx-auto  px-4 py-4 flex items-center justify-between">
@@ -26,7 +31,7 @@ export default function Header() {
         <Link href="/cart" className="relative inline-block">
           <span className="text-2xl">🛒</span>
           <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2">
-            {cartItemsCount}
+            {cartItemCount}
           </span>
         </Link>
       </div>

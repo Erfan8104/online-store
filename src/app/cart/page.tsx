@@ -1,5 +1,7 @@
 "use client";
 
+import { useCart } from "./../context/CartContext";
+
 const mockCartItems = [
   {
     id: 101,
@@ -20,6 +22,7 @@ const mockCartItems = [
 ];
 
 export default function CartPage() {
+  const { cartItems, removeFromCart, clearCart } = useCart();
   const calculateTotal = () => {
     return mockCartItems.reduce((total, item) => {
       const finalPrice = item.price * (1 - item.discount / 100) * item.quantity;
