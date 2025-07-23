@@ -1,26 +1,12 @@
-import { CartProvider } from "./context/CartContext";
-import Header from "./../components/Header";
-import Footer from "./../components/Footer";
+import HeroSlider from "./../components/HeroSlider";
+import FeaturedProducts from "./../components/FeaturedProducts";
 
-export const metadata = {
-  title: "Online Store",
-  description: "An online store built with Next.js and Tailwind CSS",
-};
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function Home() {
   return (
-    <html lang="en">
-      <body>
-        <CartProvider>
-          <Header />
-          {children}
-          <Footer />
-        </CartProvider>
-      </body>
-    </html>
+    <div className="flex flex-col gap 12">
+      <HeroSlider />
+
+      <FeaturedProducts />
+    </div>
   );
 }
