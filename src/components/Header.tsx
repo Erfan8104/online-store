@@ -41,6 +41,9 @@ export default function Header() {
             </span>
           )}
         </Link>
+        <Link href="/checkout" className="hover:underline text-sm">
+          تسویه حساب
+        </Link>
       </div>
     </header>
   );
