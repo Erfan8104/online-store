@@ -3,7 +3,13 @@
 import { useCart } from "./../context/CartContext";
 
 export default function CartPage() {
-  const { cartItems, removeFromCart, clearCart } = useCart();
+  const {
+    cartItems,
+    removeFromCart,
+    clearCart,
+    increaseQuantity,
+    decreaseQuantity,
+  } = useCart();
 
   const total = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity * (1 - item.discount / 100),
@@ -32,6 +38,23 @@ export default function CartPage() {
                   تومان
                 </p>
               </div>
+              <p className="flex items-center gap-2">
+                تعداد:
+                <button
+                  onClick={() => decreaseQuantity(item.id)}
+                  className="px-2 border rounded"
+                >
+                  -
+                </button>
+                {item.quantity}
+                <button
+                  onClick={() => increaseQuantity(item.id)}
+                  className="px-2 border rounded"
+                >
+                  +
+                </button>
+              </p>
+
               <button
                 className="text-red-600 font-bold"
                 onClick={() => removeFromCart(item.id)}
