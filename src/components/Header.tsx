@@ -21,9 +21,13 @@ export default function Header() {
           <Link href="/products" className="text-gray-700 hover:text-blue-600">
             محصولات
           </Link>
-          <Link href="/cart" className="text-gray-700 hover:text-blue-600">
-            سبد خرید
+          <Link
+            href="/cart"
+            className="text-sm font-medium hover:text-blue-600"
+          >
+            🛒 سبد خرید
           </Link>
+
           <Link href="/account" className="text-gray-700 hover:text-blue-600">
             حساب
           </Link>
