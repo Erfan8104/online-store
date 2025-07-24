@@ -4,7 +4,7 @@ import { useCart } from "./../app/context/CartContext";
 
 export default function Header() {
   const { cartItems } = useCart();
-  const cartItemCount = cartItems.reduce(
+  const totalCount = cartItems.reduce(
     (total, item) => total + item.quantity,
     0
   );
@@ -32,11 +32,14 @@ export default function Header() {
             حساب
           </Link>
         </nav>
-        <Link href="/cart" className="relative inline-block">
-          <span className="text-2xl">🛒</span>
-          <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2">
-            {cartItemCount}
-          </span>
+
+        <Link href="/cart" className="relative flex items-center gap-1">
+          🛒
+          {totalCount > 0 && (
+            <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+              {totalCount}
+            </span>
+          )}
         </Link>
       </div>
     </header>
