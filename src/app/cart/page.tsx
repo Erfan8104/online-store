@@ -2,74 +2,59 @@
 
 import { useCart } from "./../context/CartContext";
 
-const mockCartItems = [
-  {
-    id: 101,
-    name: "لپ‌تاپ اپل",
-    price: 25000000,
-    discount: 10,
-    quantity: 1,
-    image: "/images/product1.jpg",
-  },
-  {
-    id: 102,
-    name: "هدفون بی‌سیم",
-    price: 4500000,
-    discount: 0,
-    quantity: 2,
-    image: "/images/product2.jpg",
-  },
-];
-
 export default function CartPage() {
   const { cartItems, removeFromCart, clearCart } = useCart();
-  const calculateTotal = () => {
-    return mockCartItems.reduce((total, item) => {
-      const finalPrice = item.price * (1 - item.discount / 100) * item.quantity;
-      return total + finalPrice;
-    }, 0);
-  };
+
+  const total = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity * (1 - item.discount / 100),
+    0
+  );
 
   return (
-    <main className="max-w-4xl mx-auto px-4 py-10">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">سبد خرید</h1>
+    <main className="max-w-5xl mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-6">🛒 سبد خرید</h1>
 
-      {mockCartItems.map((item) => {
-        const finalPrice = item.price * (1 - item.discount / 100);
-        return (
-          <div
-            key={item.id}
-            className="flex items-center justify-between border-b py-4"
-          >
-            <div className="flex items-center gap-4">
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-20 h-20 object-cover rounded"
-              />
+      {cartItems.length === 0 ? (
+        <p>سبد خرید شما خالی است.</p>
+      ) : (
+        <div className="space-y-4">
+          {cartItems.map((item) => (
+            <div
+              key={item.id}
+              className="flex justify-between items-center border p-4 rounded-md"
+            >
               <div>
                 <h2 className="font-semibold">{item.name}</h2>
-                <p className="text-sm text-gray-500">تعداد: {item.quantity}</p>
+                <p>تعداد: {item.quantity}</p>
+                <p>
+                  قیمت:{" "}
+                  {(item.price * (1 - item.discount / 100)).toLocaleString()}{" "}
+                  تومان
+                </p>
               </div>
+              <button
+                className="text-red-600 font-bold"
+                onClick={() => removeFromCart(item.id)}
+              >
+                حذف
+              </button>
             </div>
+          ))}
 
-            <div className="text-blue-600 font-bold">
-              {(finalPrice * item.quantity).toLocaleString()} تومان
-            </div>
+          <hr className="my-4" />
+
+          <div className="text-right text-lg font-semibold">
+            مجموع: {total.toLocaleString()} تومان
           </div>
-        );
-      })}
 
-      <div className="mt-8 flex justify-between items-center">
-        <span className="font-bold text-lg">مجموع:</span>
-        <span className="text-xl font-bold text-green-600">
-          {calculateTotal().toLocaleString()} تومان
-        </span>
-      </div>
-
-      <button className="mt-6 w-full bg-green-600 text-white py-3 rounded hover:bg-green-700">
-        ادامه فرایند خرید
-      </button>
+          <button
+            onClick={clearCart}
+            className="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+          >
+            پاک‌سازی سبد خرید
+          </button>
+        </div>
+      )}
     </main>
   );
 }
