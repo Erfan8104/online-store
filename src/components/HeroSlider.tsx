@@ -1,28 +1,70 @@
 "use client";
 
-import { homePageData } from "@/data/mockData";
+import React from "react";
 import Link from "next/link";
+import { homePageData } from "../data/mockData";
 
 export default function HeroSlider() {
   return (
-    <section className="w-full py-8 px-4 sm:px-6 lg:px-8 ">
-      <div className="overflow-hidden relative">
-        <div className="grid md:grid-cols-2 sm:grid-cols-1 transition-all duration-500 ease-in-out justify-center gap-10">
-          {homePageData.sliderItems?.length > 0 ? (
+    <section className="w-full py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white">
+      <div className="overflow-hidden relative max-w-7xl mx-auto rounded-xl shadow-xl">
+        <div
+          className="
+            grid grid-cols-1 md:grid-cols-2
+            gap-8 md:gap-10
+            transition-all duration-500 ease-in-out
+            justify-center
+            direction-rtl
+          "
+        >
+          {homePageData.sliderItems && homePageData.sliderItems.length > 0 ? (
             homePageData.sliderItems.map((item) => (
               <div
                 key={item.id}
-                className="w-full h-170  bg-cover bg-center flex items-center justify-center"
+                className="
+                  relative w-full h-80 md:h-96 lg:h-[450px]
+                  bg-cover bg-center
+                  flex items-center justify-center
+                  rounded-lg overflow-hidden
+                  shadow-lg group
+                  transform transition-transform duration-500 ease-in-out
+                  hover:scale-105 hover:shadow-2xl
+                "
                 style={{ backgroundImage: `url(${item.image})` }}
               >
-                <div className="bg-[#f5f5f5] bg-opacity-80 p-4 rounded-md text-center max-w-md ">
-                  <h2 className="text-xl font-bold text-gray-800">
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-10 transition-opacity duration-300"></div>
+
+                {/* Content box */}
+                <div
+                  className="
+                    relative z-10
+                    bg-white bg-opacity-90
+                    p-6 md:p-8 rounded-xl
+                    text-center max-w-sm
+                    shadow-lg
+                    transition-transform duration-300 ease-in-out
+                  "
+                >
+                  <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2">
                     {item.title}
                   </h2>
-                  <p className="text-gray-600 mt-2">{item.description}</p>
+                  <p className="text-gray-700 text-base md:text-lg mt-2 mb-4 leading-relaxed">
+                    {item.description}
+                  </p>
                   <Link
                     href={item.link}
-                    className="inline-block mt-4 px-4 py-2 bg-[#ED1945] text-white rounded hover:bg-blue-700"
+                    className="
+                      inline-block mt-4
+                      px-8 py-3
+                      bg-blue-600 text-white font-semibold
+                      rounded-full
+                      shadow-md
+                      hover:bg-blue-700
+                      hover:scale-105 hover:shadow-lg
+                      transition-all duration-300 ease-in-out
+                      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50
+                    "
                   >
                     مشاهده محصولات
                   </Link>
@@ -30,7 +72,9 @@ export default function HeroSlider() {
               </div>
             ))
           ) : (
-            <p className="text-center">اطلاعاتی برای نمایش موجود نیست</p>
+            <p className="text-center text-gray-600 text-lg py-10">
+              اطلاعاتی برای نمایش موجود نیست
+            </p>
           )}
         </div>
       </div>

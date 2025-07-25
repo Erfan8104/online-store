@@ -13,10 +13,10 @@ export default function ProductsPage() {
   );
   const searchParams = useSearchParams();
   const showOnlyNew = searchParams.get("new") === "true";
+
   let filteredProducts = productsData.products;
 
   if (showOnlyNew) {
-    // Filter by ID to simulate newest products
     filteredProducts = filteredProducts.filter((product) => product.id >= 210);
   }
 
@@ -29,24 +29,28 @@ export default function ProductsPage() {
       case "rating":
         return Number(b.rating) - Number(a.rating);
       default:
-        return b.id - a.id; // Newest
+        return b.id - a.id;
     }
   });
 
   return (
-    <main>
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">محصولات</h1>
+    <main className="bg-gradient-to-br from-gray-50 to-white min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-4xl font-bold text-center text-blue-700 mb-10">
+          محصولات
+        </h1>
 
-      <div className="flex flex-col md:flex-row gap-6">
-        <FilterSidebar />
+        <div className="flex flex-col md:flex-row gap-8">
+          <FilterSidebar />
 
-        <div className="flex-1">
-          <SortDropdown onSortChange={setSortBy} />
+          <div className="flex-1">
+            <SortDropdown onSortChange={setSortBy} />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sortedProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {sortedProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

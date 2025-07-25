@@ -16,11 +16,11 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <Link href={`products/${product.id} `}>
-      <div className="bg-white p-4 rounded shadow hover:shadow-lg transition">
+      <div className="bg-white p-6 rounded-2xl shadow-xl hover:shadow-3xl transition-all duration-300 ease-in-out transform hover:scale-105 flex flex-col items-center text-center relative overflow-hidden">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-48 object-cover rounded"
+          className="w-full h-48 md:h-56 object-cover rounded-lg mb-4 transition-transform duration-300"
         />
         <h3 className="mt-4 text-lg font-semibold text-gray-700">
           {product.name}

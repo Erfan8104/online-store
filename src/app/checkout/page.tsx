@@ -2,9 +2,11 @@
 
 import { useCart } from "./../context/CartContext";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function CheckoutPage() {
   const { cartItems, clearCart } = useCart();
+  const [paid, setPaid] = useState(false);
 
   const total = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity * (1 - item.discount / 100),
@@ -13,6 +15,13 @@ export default function CheckoutPage() {
 
   return (
     <main className="max-w-4xl mx-auto p-6">
+      <Link
+        href="/products"
+        className="inline-block mt-4 text-blue-600 underline hover:text-blue-800"
+      >
+        بازگشت به فروشگاه
+      </Link>
+
       <h1 className="text-2xl font-bold mb-6">تسویه حساب</h1>
 
       {cartItems.length === 0 ? (
@@ -49,6 +58,7 @@ export default function CheckoutPage() {
             onClick={() => {
               alert("پرداخت با موفقیت انجام شد!");
               clearCart();
+              setPaid(true);
             }}
             className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700"
           >
