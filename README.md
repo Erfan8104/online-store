@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🛍️ Online Store - فروشگاه آنلاین
+یک فروشگاه آنلاین کامل و واکنش‌گرا با Next.js 14، Tailwind CSS، TypeScript و App Router
 
-## Getting Started
+این پروژه شامل نمایش محصولات، سبد خرید، فیلتر، مرتب‌سازی، صفحه تسویه حساب و جزئیات محصول است.
 
-First, run the development server:
+✨ امکانات
+✅ نمایش لیست محصولات همراه با تصویر، تخفیف و امتیاز
 
-```bash
+✅ فیلتر و مرتب‌سازی محصولات (جدیدترین، ارزان‌ترین، گران‌ترین، محبوب‌ترین)
+
+✅ سبد خرید حرفه‌ای با امکان افزایش، کاهش و حذف محصول
+
+✅ محاسبه قیمت نهایی با تخفیف
+
+✅ صفحه جزئیات محصول
+
+✅ تسویه حساب و پاک‌سازی سبد
+
+✅ ریسپانسیو کامل و طراحی زیبا با UX بالا
+
+🛠️ تکنولوژی‌ها
+Next.js 14 (App Router)
+
+TypeScript
+
+Tailwind CSS
+
+React Hooks
+
+Context API
+
+🚀 راه‌اندازی پروژه
+git clone https://github.com/Erfan8104/online-store.git
+cd online-store
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+📁 ساختار پوشه‌ها
+📦online-store/
+┣ 📂public/
+┣ 📂src/
+┃ ┣ 📂app/
+┃ ┃ ┣ 📂account/
+┃ ┃ ┃ ┗ 📜page.tsx
+┃ ┃ ┣ 📂cart/
+┃ ┃ ┃ ┗ 📜page.tsx
+┃ ┃ ┣ 📂checkout/
+┃ ┃ ┃ ┗ 📜page.tsx
+┃ ┃ ┣ 📂context/
+┃ ┃ ┃ ┗ 📜CartContext.tsx
+┃ ┃ ┣ 📂products/
+┃ ┃ ┃ ┣ 📂[id]/
+┃ ┃ ┃ ┃ ┣ 📜page.tsx ← صفحه جزئیات محصول
+┃ ┃ ┃ ┃ ┣ 📜layout.tsx
+┃ ┃ ┃ ┃ ┗ 📜clientLayout.tsx
+┃ ┃ ┃ ┗ 📜page.tsx ← صفحه لیست محصولات
+┃ ┃ ┣ 📜favicon.ico
+┃ ┃ ┣ 📜globals.css
+┃ ┃ ┣ 📜layout.tsx ← لایه اصلی پروژه
+┃ ┃ ┣ 📜not-found.tsx
+┃ ┃ ┗ 📜page.tsx
+┃ ┣ 📂components/
+┃ ┃ ┣ 📜FeaturedProducts.tsx
+┃ ┃ ┣ 📜FilterSidebar.tsx
+┃ ┃ ┣ 📜Footer.tsx
+┃ ┃ ┣ 📜Header.tsx
+┃ ┃ ┣ 📜HeroSlider.tsx
+┃ ┃ ┣ 📜ProductCard.tsx
+┃ ┃ ┗ 📜SortDropdown.tsx
+┃ ┣ 📂data/
+┃ ┃ ┗ 📜mockData.ts ← داده‌های اولیه
+┃ ┗ 📂utils/
+┣ 📜.gitignore
+┣ 📜eslint.config.mjs
+┣ 📜next-env.d.ts
+┣ 📜next.config.js
+┣ 📜package-lock.json
+┗ 📜package.json
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+📌 نکات مهم
+برای سادگی، اطلاعات از mockData.ts خوانده می‌شود.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+مدیریت وضعیت سبد خرید با Context انجام شده است.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+👤 توسعه‌دهنده
+Erfan
